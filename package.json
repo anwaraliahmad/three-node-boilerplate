@@ -1,0 +1,19 @@
+{
+  "name": "three-node-boilerplate",
+  "version": "0.0.0",
+  "description": "A boilerplate for a Three.js project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anwaraliahmad/three-node-boilerplate.git"
+  },
+  "author": "Anwar Ali-Ahmad <anwar.aliahmad@icloud.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anwaraliahmad/three-node-boilerplate/issues"
+  },
+  "homepage": "https://github.com/anwaraliahmad/three-node-boilerplate"
+}
