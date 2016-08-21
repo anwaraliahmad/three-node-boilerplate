@@ -1,6 +1,6 @@
 window.THREE = require('three');
 window.OrbitControls = require('three-orbit-controls')(THREE);
-window.stats = require('stats.js');
+window.Stats = require('stats.js');
 
 // The setting up the scene, which contains all objects
 let scene = new THREE.Scene();
@@ -21,10 +21,22 @@ document.body.appendChild( renderer.domElement );
 let axisHelper = new THREE.AxisHelper(4);
 scene.add(axisHelper);
 
+// Adding DOM element which displays FPS performance between rendered frames
+let stats = new Stats();
+stats.showPanel(0);
+document.body.appendChild(stats.dom);
+
 function render () {
+  // Begin recording framerate
+  stats.begin();
+  // Updating camera controls
   controls.update();
   // Rendering the scene
   renderer.render(scene, camera);
+
+  // Finish recording framerate (now updates the FPS displayed on stats DOM element)
+  stats.end();
+
   // Telling the browser that the function render seeks to reanimate frame
   window.requestAnimationFrame(render);
 }
