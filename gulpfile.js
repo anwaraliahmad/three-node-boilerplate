@@ -22,12 +22,12 @@ gulp.task('compile-js', function() {
 );
 
 gulp.task('styles', function() {
-    gulp.src('sass/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('dist/css/'));
+    return gulp.src('app/sass/**/*.scss')
+        .pipe(sass({ includePaths : ['app/sass/'] }).on('error', sass.logError))
+        .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('server', ['compile-js'], function() {
+gulp.task('server', ['compile-js', 'styles'], function() {
   browserSync.create().init({
     files: ['dist/**'],
     port: 3001,
@@ -37,7 +37,7 @@ gulp.task('server', ['compile-js'], function() {
   });
 
   gulp.watch(['app/**/*.js'], ['compile-js']);
-  gulp.watch(['app/**/*.scss'], ['compile-js']);
+  gulp.watch(['app/**/*.scss'], ['styles']);
 
   return nodemon({
     script: 'server/index.js',
